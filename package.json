@@ -1,0 +1,20 @@
+{
+  "name": "node-intro",
+  "version": "1.0.0",
+  "description": "Node.js Introduction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YadavAnurag/node-intro.git"
+  },
+  "author": "Anurag Yadav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YadavAnurag/node-intro/issues"
+  },
+  "homepage": "https://github.com/YadavAnurag/node-intro#readme"
+}

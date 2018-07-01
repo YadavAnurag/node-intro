@@ -1,0 +1,50 @@
+Creator = Ryan Dahl
+
+
+#Node.js Building Blocks
+1. libuv
+    High performance, cross platform, evented IO library.
+2. V8
+    Google's JS engine(also used in Chrome)
+3. js, C++
+
+
+
+#NVM creatror= Tim Caswell
+Manage multiple versions with NVM
+
+1. git clone git://github.com/creationix/nvm.git ~/nvm
+2. . ~/nvm/nvm.sh
+3. nvm install 0.8.14
+  To list of all versions
+    >nvm ls
+4. nvm use 0.6.19
+5. To set default version
+    >nvm alias default 0.8.14
+
+
+
+
+
+#Asynchronous Code
+1. Typical approach
+
+var conn = getDbConnection(connectionString);
+var stmt = conn.createStatement();
+var result = stmt.executeQuery(sqlQuery);
+for(var i=0; i<result.length; i++){
+  //print result[i]
+}
+
+2. An Asynchronous, "non-blocking" approach
+
+getDbConnection(connectionString, function(err, conn){
+  conn.createStatement(function(err, stmt){
+    var result = stmt.executeQuery(sqlQuery);
+
+    result.on('row', function(result){
+      //print result
+
+    });
+  });
+})
