@@ -48,3 +48,80 @@ getDbConnection(connectionString, function(err, conn){
     });
   });
 })
+
+
+
+
+
+
+#Events and EventEmitter class( Non-blocking does not always mean callback)
+1. Callback
+  1. Request and Reply
+  2. No results until all results
+  3. Either error or result
+
+2. Events
+  1. Publish and Suscribe
+  2. Act on results as they arrive
+  3. Parital results before error
+
+  var result = getThem(param);
+
+  result.on('item', function(i){//do something});
+  result.on('done', function(){// No more items});
+  result.on('error', function(){//react to error});
+
+In envets there are two main parts
+1. The publisher
+  emitter.emit(event, [args]);
+2. The Suscriber
+  emitter.on(event, listener);
+
+1. "event" can be any string
+2. An event can be emitted with zero or more arguments
+3. The set of events and their arguments constitue a "interface" exposed to the Suscriber by the publisher(emitter).
+
+Two Common patterns for EventEmitters:
+1. As a return value from a function call.
+2. Objects that extend EventEmitter to emit events themselves.
+
+
+
+#Streams in Node.js
+1. Streams are instances of (and extension to) EventEmitter with an agreed upon "interface".
+2. A unified abstraction for managing data flow, including:
+  1. Network traffic(http req and res, tcp socket).
+  2. File I/O
+  3. stdin/stdout/stderr
+3. A Stream in an instance of either
+  1. ReadableStream
+  2. WritableStream
+  3. Both
+4. A ReadableStream can be pipe()'d to a WritableStream
+  Applies "backpressure"
+5. ReadableStream provide data faster than a WritableStream can consume it.
+
+
+
+#Piping Streams
+1. ReadableStream
+  1. readable [boolean]
+  2. event: 'data'
+  3. event: 'end'
+  4. event: 'error'
+  5. event: 'close'
+  6. pause()
+  7. resume()
+  8. destroy()
+  9. pipe()
+
+2. WritableStream
+  1. writable [boolean]
+  2. event: 'drain'
+  3. event: 'error'
+  4. event: 'close'
+  5. event: 'pipe'
+  6. write()
+  7. end()
+  8. destroy()
+  9. destroySoon()

@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/YadavAnurag/node-intro/issues"
   },
-  "homepage": "https://github.com/YadavAnurag/node-intro#readme"
+  "homepage": "https://github.com/YadavAnurag/node-intro#readme",
+  "dependencies": {
+    "request": "^2.87.0"
+  }
 }
