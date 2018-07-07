@@ -125,3 +125,134 @@ Two Common patterns for EventEmitters:
   7. end()
   8. destroy()
   9. destroySoon()
+
+
+
+#Process Object
+A collection of Streams
+1. process.stdin (ReadableStream)
+2. process.stdout (WritableStream)
+3. process.stderr (WritableStream)
+
+Attribute of the current process
+1. process.env
+2. process.argv
+3. process.pid
+4. process.title
+5. process.uptime()
+6. process.memoryUsage()
+7. process.cwd()
+
+Process related actoin
+1. process.abort()
+2. process.chdir()
+3. process.kill() requires process.pid as argument
+4. process.setgid()
+5. process.setuid()
+
+process Object is an instance of EventEmitter class
+1. event 'exit'
+2. event 'uncaughtException'
+3. POSIX signals (SIGINT,SIGTERM ....)
+
+
+
+#Interacting with file system
+1. Wrapper around POSIX function(both async ans sync ) function include:
+  1. rename
+  2. truncate
+  3. chown
+  4. fchown
+  5. Ichown
+  6. chmod
+  7. fchmod
+  8. Ichmod
+  9. stat
+  10. fstat
+  11. Istat
+  12. link
+  13. symlink
+  14. readlink
+  15. realpath
+  16. unlink
+  17. rmdir
+  18. mkdir
+  19. readdir
+  20. close
+  21. open
+  22. utimes
+  23. futimes
+  24. fsync
+  25. write
+  26. read
+  27. readFile
+  28. writeFile
+  29. appendFile
+  For examle == fs.readdir(path, callback) and fs.readdirSync(path)
+
+2. Stream oriented function
+  1. fs.createReadStream()-- return as fs.ReadStream(a readable Stream)
+  2. fs.createWriteStream()-- return as fs.WriteStream( a WritableStream)
+
+3. Watch a file or directory
+  1. fs.watch()-- return as fs.FSWatcher( an event emitter)
+  2. 'change' event-- type of change and filename changed
+  3. 'error' event -- emitted when error occurred
+
+
+
+
+
+#Buffer
+1. js has diffuclty dealing with binary data
+2. However Networking and filesystem require it
+3. The Buffer class provide a raw memory allocation for dealing with binary data
+4. Buffers can be converted to/form strings by providing the encoding--
+  1. ascii
+  2. utf8 (default)
+  3. utf16e
+  4. ucs2
+  5. base64
+  6. binary
+  7. hex
+
+
+
+
+#OS Module
+Provide info about the currently running os
+
+1. os.tmpDir()
+2. os.hostname()
+3. os.type()
+4. os.platform()
+5. os.release()
+
+
+6. os.uptime()
+7. os.loadavg()
+8. os.totalmem()
+9. os.freemem()
+10. os.cpus()
+11. os.networkInterfaces()
+12. os.EOL
+
+
+
+
+
+#Unit testing
+1. Test for (in)equality between expected and actual values
+2. Test wether a block of code throws(or does not throws) exception.
+3. Test for 'truthiness' of a value
+4. Test wether the error parameter passed to callback.
+5. Each assertion contain a message to output on failure.
+
+Types of equality
+1. assert.equal() shallow, coercive equality ==
+2. assert.strictEqual() ===
+3. assert.deepEqual()
+  1. Identical values are equal.
+  2. Values that are not type of 'object' are determined by ==
+  3. Date objects are equal if both refer to the same date/time
+  4. Other object including array are equal if the have same number of owned properties, equalent values for every key and an identical "prototype"
